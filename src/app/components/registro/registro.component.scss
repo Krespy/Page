@@ -1,0 +1,27 @@
+.form-group{   
+    margin-left: 10%; 
+    width: 60%;
+}
+
+.invalid-feedback{    
+    text-decoration-color: red;
+}
+
+.cancel{
+    margin-left: 20px;
+    color: blue;
+    text-decoration: underline;
+    text-decoration-color: blue;
+}
+
+.ClaseAsterisko{ 
+    margin-left: 10px;
+    color: red;
+}
+
+input{
+    transition: background-color 1s ease-out;
+}
+input:focus{
+    background-color: rgba(176, 248, 224, 0.794)
+}

@@ -1,0 +1,75 @@
+Page:Size {{ page_size }} <br> Page_number {{ page_number }} <br>
+<br>
+<div *ngIf="!this.Loading"> 
+<mat-paginator [length]="this.cursos.totalElements"
+               [pageSize]="page_size"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="handlePage($event)" showFirstLastButtons>                 
+</mat-paginator>
+
+Page:Size {{ page_size }} <br> Page_number {{ page_number }} <br>
+Cursos: {{ cursos.content.length }}
+<div *ngFor="let user of cursos.content | paginate:page_size:page_number ; let i = index ">    
+    <div *ngIf="this._DatosG.isDesktopDevice" >
+        <div class="cardAlto"> 
+            <mat-card *ngIf="(i % 2) == 0" class="SeccionLeft">        
+                <mat-card-header>
+                    <div mat-card-avatar [style]="'background-image: url('+user.icono+'); background-size: cover'"></div>                                
+                    <mat-card-title> {{ user.nombre }}</mat-card-title>
+                    <mat-card-subtitle> {{ user.subnombre }}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{ user.foto }}" class="Foto">
+                <mat-card-content>
+                <p>
+                    {{ user.descripcion }} 
+                    
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="Button" (click)="Boton(user.id,user.nombre)" mat-raised-button color="warn" >{{ this.BotonText }}</button>      
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div class="cardAlto"> 
+            <mat-card *ngIf="(i % 2) == 1" class="SeccionRight">
+                <mat-card-header >
+                    <div mat-card-avatar [style]="'background-image: url('+user.icono+'); background-size: cover'"></div>  
+                    <mat-card-title> {{ user.nombre }}</mat-card-title>
+                    <mat-card-subtitle> {{ user.subnombre }}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{ user.foto }}" class="Foto">
+                <mat-card-content>
+                <p>
+                    {{user.descripcion }} 
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="Button" (click)="Boton(user.id,user.nombre)" mat-raised-button color="warn" >{{ this.BotonText }}</button>      
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    
+    <div *ngIf="!this._DatosG.isDesktopDevice">
+        <span class="seccionLeftMobile">
+            <mat-card>        
+                <mat-card-header>
+                    <div mat-card-avatar [style]="'background-image: url('+user.icono+'); background-size: cover'"></div>                            
+                    <mat-card-title> {{ user.nombre }}</mat-card-title>
+                    <mat-card-subtitle> {{ user.subnombre }}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{user.foto }}" class="Foto">
+                <mat-card-content>
+                <p>
+                    {{ user.descripcion }}
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button style="margin-left: (100%-60%+10%+15%);" (click)="Boton(user.id,user.nombre)" mat-raised-button color="warn" >{{ this.BotonText }} </button>      
+                </mat-card-actions>
+            </mat-card>
+        </span>
+    </div>
+    
+</div>
+</div>

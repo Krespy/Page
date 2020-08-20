@@ -1,0 +1,130 @@
+<br><br>
+<p> Curso elegido: {{ this._DatosG.CursoId }}</p>
+<br><br>
+<div *ngIf="!this.Loading">
+<mat-card-header>
+    <div mat-card-avatar [style]="'background-image: url('+ this.curso.icono+'); margin-left: 15%; background-size: cover'"> </div>
+        <mat-card-title> {{ this.curso.nombre}}</mat-card-title> 
+        <mat-card-subtitle> {{ this.curso.subnombre }}</mat-card-subtitle>
+</mat-card-header>        
+<br><br>
+<div class="Titulo">
+   {{ this.curso.descripcion}}  
+</div> 
+<br>
+<div *ngIf="this.cursoAprobado" class="Titulo" style="color: darkcyan;"> Nota del curso: {{ this.NotaRta }}</div>
+<br>
+<div class="Titulo">Contenido - Diabetes miellitus - Trabajo asistencial en el día a día del geronte</div>
+<br><br><br>
+
+
+<div *ngFor="let secciones of this.curso.secciones; let i = index"> 
+
+<div>
+<span class="SeccionLeft" (click)="secciones.active=!this.secciones.active"> {{ this.secciones.nombre }}</span>
+<span class="SeccionRight"> {{ secciones.time}} <mat-checkbox [checked]="secciones.completed" disabled="true"></mat-checkbox> <br> </span>
+<br>
+</div>
+<br>
+    <div>
+    <ng-container *ngIf="this.secciones.active" >
+        <div *ngFor="let temas of secciones.partes; let j = index"> 
+            <ng-container *ngIf="temas.tipo != 'Descargas'" >
+                <div style="height: 20px;">
+                <span (click)="temas.abierto=!temas.abierto" class="left"> 
+                    {{ temas.titulo }}
+                </span>     
+                <span class="right">{{ temas.tipo }} {{ temas.duration}} <mat-checkbox [checked]="temas.completed" disabled="true"></mat-checkbox>  </span>                       
+                </div>
+            </ng-container>
+            <ng-container *ngIf="temas.tipo == 'Descargas'" >
+                <div style="height: 20px;">
+                <span (click)="temas.abierto=!temas.abierto" class="left"> 
+                    {{ temas.titulo }}
+                </span>     
+                <span class="right">{{ temas.tipo }} {{ temas.duration}} </span>                       
+                </div>
+            </ng-container>
+            <br>
+            <ng-container *ngIf="temas.abierto" >
+                    <ng-container *ngIf="temas.tipo == 'audio'" >
+                        <div class="center">    
+                            <audio (ended)="ended(j,i)" src="{{ temas.src }}"
+                            controls controlsList="nodownload" style="width: 50%; filter: sepia(30%) drop-shadow(16px 16px 15px red) saturate(70%) grayscale(2) contrast(50%) invert(12%); height: 40px; ">
+                            Your browser does not support the <code>audio</code> element.
+                            </audio>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="temas.tipo == 'video'">
+                        <div class="center">
+                        <video controls width="70%" controlslist="nodownload" (ended)="ended(j,i)">
+                        <source src="{{ temas.src }}" type="video/mp4"> Sorry, your browser doesn't support embedded videos.
+                        </video> 
+                        </div>
+                    </ng-container>                    
+                    <ng-container *ngIf="temas.tipo == 'Descargas'">
+                            <div *ngFor="let link of temas.links"style="margin-left: 15%;">   
+                            <a href="{{ link.url }}"> {{ link.referencia }} </a>
+                            <br>
+                            <br>                               
+                            </div>
+                    </ng-container>
+                    <br>
+            </ng-container>               
+        </div>
+    </ng-container> 
+    </div>
+<br>
+
+</div>
+
+    
+    <br>
+    <mat-card *ngIf="!this.cursoCompleto" class="width: 100%;" >
+        <mat-card-content>
+          <span class="float: left; margin-left: 20%;">
+            Se desbloqueara un examen de fin de curso cuando complete al 100% todas las secciones del curso
+          </span>
+        </mat-card-content>    
+    </mat-card>
+    <br>
+    <div *ngIf="this.cursoCompleto && !this.cursoAprobado">
+        <button  class="ExamenLeft" mat-raised-button color="warn" (click)="comenzarTest(); cdexamen.begin();"> Examen Fin de curso </button>
+        <span class="ExamenRight">            
+             Tiempo de examen: <countdown #cdexamen style="font-size:20px;color: darkcyan; padding:30px;font-family:monospace;" (event)="TimerEvent($event)" [config]="{leftTime: this.curso.ExamenTime, format: 'H:mm:ss',  demand:true}"></countdown>            
+             <mat-checkbox [checked]="this.cursoAprobado" disabled="true"></mat-checkbox> <br> </span> 
+            
+    </div>
+    <br>
+    <br>
+    <div>
+        <ng-container *ngIf="this.EmpezarTest">   
+            <br><br>         
+            <div  *ngFor="let preg of this.curso.Preguntas; let i = index">
+                <br>               
+                <span class="PregExamen"> Pregunta nro {{ i+1 }} - {{ preg.Pregunta }}                                
+                    <br>
+                <mat-radio-group class="example-radio-group" (change)="onChange($event,i)" name="gender '{{i}}''">                                  
+                        <mat-radio-button value="1" class="example-radio-button"> {{ preg.Op1 }} </mat-radio-button>
+                        <mat-radio-button value="2" class="example-radio-button"> {{ preg.Op2 }} </mat-radio-button>
+                        <mat-radio-button value="3" class="example-radio-button"> {{ preg.Op3 }} </mat-radio-button>
+                        <mat-radio-button value="4" class="example-radio-button"> {{ preg.Op4 }} </mat-radio-button>                       
+                </mat-radio-group>                           
+                </span>
+                <br>
+                <br>
+            </div>            
+            <br>
+        </ng-container>        
+    </div>
+    <br>
+    <br>
+    <button *ngIf="!this.cursoAprobado && this.EmpezarTest" style="margin-left: 82%;" (click)="finalizarExamen()" mat-raised-button color="warn">Finalizar examen</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+<br><br><br>
+</div>

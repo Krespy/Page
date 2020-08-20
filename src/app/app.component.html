@@ -1,0 +1,18 @@
+<nav mat-tab-nav-bar mat-align-tabs="end" [backgroundColor]="background" [color]="'warn'">
+        <a mat-tab-nav-bar class="avatar1" href="\"></a>
+        <!-- Esto de abajo tiene un error. de cuando lo compara-->
+        <a mat-tab-nav-bar class="avatar2" href="\" *ngIf="this._DatosG.isDesktopDevice"></a>
+                
+        <span class="example-spacer"></span>
+        <a mat-tab-link 
+          *ngFor="let routeLink of _DatosG.navLinks; let i = index;"
+          [routerLink]="routeLink.path"
+          routerLinkActive="mat-tab-link-active"
+          #rla="routerLinkActive"           
+          [active]="_DatosG.activeLinkIndex === i"           
+          (click)="this._DatosG.activeLinkIndex = i"
+          [routerLinkActiveOptions]="{exact: true}"
+       >   {{routeLink.label}}
+       </a>
+</nav>
+<router-outlet></router-outlet>

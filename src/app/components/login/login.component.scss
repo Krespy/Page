@@ -1,0 +1,30 @@
+.mat-chip{
+    display: flex;
+    justify-content: center;
+    margin-left: -40%;
+}
+
+.form-group{
+    margin-left: 10%;
+    width: 60%;
+}
+
+.invalid-feedback{    
+    text-decoration-color: red;
+}
+
+.registro{
+    margin-left: 20px;
+    color: blue;
+    text-decoration: underline;
+    text-decoration-color: blue;
+}
+
+input{
+    transition: background-color 1s ease-out;
+}
+input:focus{
+    background-color: rgba(176, 248, 224, 0.794)
+}
+
+

@@ -1,0 +1,102 @@
+.Carousel{    
+    width: 90%;
+    opacity: 0.7;
+    margin: 10px auto;    
+    height: 500px;
+}
+.Cursos{
+    position: relative;
+    background-color: #808080;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.TextoPresentacion{    
+    background-color: darkslateblue;       
+    margin: 0 auto;       
+    padding: 5%;
+}
+
+.TextoPresentacion__Image{
+    border-radius: 42%;
+}
+
+.SeccionLeft{ 
+    display: inline-block;
+    color: white; 
+    text-align: center;    
+    width: 25%;        
+    padding: 20px;
+}
+
+.SeccionRight{    
+    display: inline-block;
+    color: white;             
+    margin-left: 5%;
+    width: 50%;    
+    padding: 20px;
+}
+
+#cajacookies {
+    text-align: center;
+    box-shadow: 0px 0px 5px 5px #808080;
+    background-color: white;
+    color: #f30404;
+    padding: 10px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+  
+    position: fixed;
+    top: 65px;
+    width: 98%;
+  }
+  
+  #cajacookies button {
+    color: #f30404;
+  }
+
+.TextoInterno{
+    
+    width: 55%;
+    margin-left: 40%;
+    font-size: 20px;
+    font-family: monospace;
+    color: white; 
+    
+}
+.TextoInterno{
+    width: 55%;
+    margin-left: 40%;
+    font-size: 20px;
+    font-family: monospace;
+    color: white; 
+    
+}
+
+
+.container{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-width: 320px;
+}
+
+
+.panel{
+    margin-bottom: 21px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    position: relative;
+    border: none;
+    box-shadow: none;
+}
+
+.hr-primary {
+    background-color: #472594;  
+    line-height: 100px;  
+    // margin-inline-start: auto;
+    // margin-inline-end: auto;
+    overflow: hidden;
+}

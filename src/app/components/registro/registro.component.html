@@ -1,0 +1,55 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <h3>Registro</h3><br>
+        <label for="Usuario">Usuario </label><label class="ClaseAsterisko"> *</label>
+        <input type="text" placeholder="Ingrese su Usuario aqui" formControlName="Usuario" class="form-control" [ngClass]="{ 'is-invalid': submitted &&  (this.Existente || f.Usuario.errors) }" />
+        <div *ngIf="submitted && (this.Existente || f.Usuario.errors)" class="invalid-feedback">
+            <div *ngIf="this.Existente">Usuario existente</div>
+            <div *ngIf="f.Usuario.errors.required">Se requiere ingresar el Usuario</div>            
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Clave </label><label class="ClaseAsterisko"> *</label>
+        <input type="password" placeholder="Ingrese su Clave aqui" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Se requiere ingresar la Clave</div>
+            <div *ngIf="f.password.errors.minlength">La clave debe tener minimo 6 digitos</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Nombre">Nombre</label><label class="ClaseAsterisko"> *</label>
+        <input type="text" placeholder="Ingrese su Nombre aqui" formControlName="Nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Nombre.errors }" />
+        <div *ngIf="submitted && f.Nombre.errors" class="invalid-feedback">
+            <div *ngIf="f.Nombre.errors.required">Se requiere ingresar el Nombre</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Apellido">Apellido </label><label class="ClaseAsterisko"> *</label>
+        <input type="text" placeholder="Ingrese su Apellido aqui" formControlName="Apellido" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Apellido.errors }" />
+        <div *ngIf="submitted && f.Apellido.errors" class="invalid-feedback">
+            <div *ngIf="f.Apellido.errors.required">Se requiere ingresar el Apellido</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Direccion">Dirección</label>
+        <input type="text" placeholder="Ingrese su Dirección aqui" formControlName="Direccion" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label><label class="ClaseAsterisko"> *</label>
+        <input type="text" placeholder="Ingrese su Email aqui" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted &&  (this.ExistenteMail || f.Email.errors)}" />
+        <div *ngIf="submitted && (this.ExistenteMail || f.Email.errors)" class="invalid-feedback">
+            <div *ngIf="this.ExistenteMail">Email existente</div>
+            <div *ngIf="f.Email.errors.required">Se requiere ingresar el Email</div>
+            <div *ngIf="f.Email.errors.email">Ingrese un email valido</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">            
+            Register
+        </button>
+        <span (click)="volver()" class="cancel">Cancel</span>  
+        <br>   
+        <br>
+        <div *ngIf="registerForm.invalid" class="ClaseAsterisko"> * Estos campos son obligatorios y no pueden estar vacios</div>    
+    </div>      
+</form>

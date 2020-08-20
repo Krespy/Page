@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Alejandro Sanchez",
+    "username": "Ale",
+    "email": "Alejandro@Smartways.com.ar",
+    "clave": "123",
+    "tipo": "Admin",
+    "cursos": [
+        {"id": 0},
+        {"id": 1},
+        {"id": 2},
+        {"id": 3},
+        {"id": 4},
+        {"id": 5},
+        {"id": 6},
+        {"id": 7},
+        {"id": 8}
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Maria Luisa Soria",
+    "username": "MLS",
+    "email": "abc@gmail.com",
+    "clave": "123",
+    "tipo": "Admin",
+    "cursos": [
+        {"id": 0},
+        {"id": 1},
+        {"id": 2},
+        {"id": 3},
+        {"id": 4},
+        {"id": 5},
+        {"id": 6},
+        {"id": 7},
+        {"id": 8}
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Ejemplo 1",
+    "username": "Bat",
+    "email": "Sincere@april.biz",
+    "clave": "1",
+    "tipo": "Cliente",
+    "cursos": [
+        {"id": 1},
+        {"id": 2},
+        {"id": 3}
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Ejemplo 2",
+    "username": "Cat",
+    "email": "Sincere@april.biz",
+    "clave": "1",
+    "tipo": "Cliente",
+    "cursos": [
+        {"id": 5},
+        {"id": 8},
+        {"id": 0}
+    ]
+  }  
+]
